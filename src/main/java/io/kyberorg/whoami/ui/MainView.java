@@ -28,7 +28,7 @@ import com.vaadin.flow.theme.lumo.Lumo;
         description = "WhoAmI: site about @kyberorg")
 @Theme(value = Lumo.class, variant = Lumo.DARK)
 @CssImport("./css/main_view.css")
-@Route("/")
+@Route("")
 public class MainView extends VerticalLayout implements PageConfigurator {
 
     public MainView() {
