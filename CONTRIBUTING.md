@@ -14,3 +14,5 @@ Created by [Krita](https://krita.org).
 * Encode given png to base64. Using [base64-image.de](https://www.base64-image.de/)
 * Embed it to html
 
+## About:icons
+Icons are resized using [resizeimage.net](https://resizeimage.net/)
