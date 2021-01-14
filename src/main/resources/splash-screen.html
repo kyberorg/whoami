@@ -1,6 +1,5 @@
+<!-- Based on https://github.com/vlukashov/vaadin-splash-screen-demo/ -->
 <div id="splash-screen">
-    <!-- This loading animation copies the one on vaadin.com.
-         You can find much simpler examples on https://tobiasahlin.com/spinkit -->
     <div class="logo-wrapper">
         <!-- back layer: defines the colors when the logo is revealed -->
         <div class="logo-background"></div>
@@ -16,23 +15,22 @@
         <div class="logo-guard"></div>
 
         <!-- front layer: defines the shape of the Vaadin logo
-             This is a negative image of the Vaadin logo, i.e. it's mostly opaque white, and
-             the only part that it does not cover make the background visible in the shape of
-             the Vaadin logo -->
+             This is a negative image of the Yalsee logo, this can be done with Krita.
+             Start from white background and use eraser.
+             Base64 version used to avoid loading "external" image -->
         <div class="logo-mask">
-            <svg xmlns="http://www.w3.org/2000/svg" width="160" height="44">
-                <path d="M0 0v44h160V0H0zm123.56 4.664h3.4a4.43 4.43 0 0 1 4.43 4.441v9.33a1.73 1.73 0 0 0 1.719 1.729h.44a1.82 1.82 0 0 1 1.82 1.82v.03a1.82 1.82 0 0 1-1.82 1.82h-.44a1.73 1.73 0 0 0-1.719 1.729v9.33a4.43 4.43 0 0 1-4.43 4.441h-3.4a1.7 1.7 0 0 1-.01-3.41h1.068a1.73 1.73 0 0 0 1.73-1.73v-8.45a3.65 3.65 0 0 1 3.1-3.609 5.38 5.38 0 0 1 .9-.09v-.08a5.38 5.38 0 0 1-.9-.09 3.65 3.65 0 0 1-3.1-3.609v-8.46a1.73 1.73 0 0 0-1.73-1.73h-1.068a1.7 1.7 0 0 1-.83-.219 1.7 1.7 0 0 1 .84-3.191zm-38.734.342a2.54 2.54 0 0 1 2.613 2.539v14.12c.01.16 0 .3 0 .48v7.38a2.54 2.54 0 0 1-4.809 1.139 9.87 9.87 0 1 1-.271-17.119v-6a2.54 2.54 0 0 1 2.467-2.539zm9.145 0a2.54 2.54 0 1 1 0 5.08 2.54 2.54 0 1 1 0-5.08zm-59.73 7.3a9.87 9.87 0 0 1 9.869 9.871v7.35a2.54 2.54 0 0 1-4.809 1.139 9.87 9.87 0 1 1-5.061-18.359zm21.78 0a9.87 9.87 0 0 1 9.811 9.871v7.35a2.54 2.54 0 0 1-4.811 1.139 9.87 9.87 0 1 1-5-18.359zm38 0a2.54 2.54 0 0 1 2.541 2.541v14.67a2.54 2.54 0 1 1-5.08 0v-14.67a2.54 2.54 0 0 1 2.539-2.541zm9.242.012a2.54 2.54 0 0 1 2.658 2.219 7.79 7.79 0 0 1 4.84-1.68 7.83 7.83 0 0 1 7.83 7.809v8.852a2.54 2.54 0 0 1-5.08 0v-7.72a3.785 3.785 0 1 0-7.57 0v7.72a2.54 2.54 0 0 1-5.08 0v-14.67a2.54 2.54 0 0 1 2.402-2.529zm-81.668.04a2.54 2.54 0 0 1 2.426 2.469 2.53 2.53 0 0 1-.311 1.102l-7 14.66a2.54 2.54 0 0 1-4.619-.051l-7-14.61-.07-.16v-1.6l.13-.17v-.06l.07-.17v-.06l.12-.15v-.07l.1-.13.07-.08.1-.11.07-.08.1-.102.08-.068.11-.1.08-.06.13-.11h.07l.21-.01.18-.068h.07l.17-.05H8.4l.15.06h.08l.13.068h.1l.06.08.1.08.13.06.11.1.07.07.1.11.1.08.08.11.07.1.06.1.07.13v.05l4.71 9.86 4.71-9.86a2.54 2.54 0 0 1 2.373-1.379zm117.82.305a2.28 2.28 0 0 1 1.086.305l13.19 7.17h.08a2 2 0 0 1 1.201 1.859l.01.08a2 2 0 0 1-1.23 1.871h-.06l-13.19 7.13a2.28 2.28 0 0 1-3.42-2 2.23 2.23 0 0 1 1.57-2.17l9.1-4.88-9.11-4.89a2.23 2.23 0 0 1-1.561-2.17 2.28 2.28 0 0 1 2.334-2.305zM34.063 17.408a4.77 4.77 0 1 0 4.957 4.768 4.77 4.77 0 0 0-4.957-4.768zm21.76 0a4.77 4.77 0 1 0 4.967 4.768 4.77 4.77 0 0 0-4.967-4.768zm21.56.02a4.77 4.77 0 0 0 .199 9.535l.01-.02a4.77 4.77 0 0 0 4.76-4.75 4.77 4.77 0 0 0-4.969-4.766z"
-                      fill="#fff"/>
-            </svg>
+            <img src="data:image/png;base64,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"
+                 width="160" height="44" alt="loading..." />
         </div>
     </div>
 
     <style>
-        * {
+        .logo-* {
             box-sizing: border-box;
         }
 
         #splash-screen {
+            box-sizing: border-box;
             background: #ffffff;
             position: fixed;
             top: 0;
@@ -46,6 +44,8 @@
             z-index: 100000;
         }
 
+        /* Used in MainView.java */
+        /*noinspection CssUnusedSymbol*/
         #splash-screen.loaded {
             pointer-events: none;
             opacity: 0;
@@ -68,6 +68,7 @@
             position: absolute;
             width: 160px;
             height: 44px;
+            box-sizing: border-box;
         }
 
         .logo-guard {
@@ -79,7 +80,7 @@
         }
 
         .logo-background {
-            background-color: #34373b;
+            background-color: #1676f3;
             margin: 3px;
             border-right: 38px solid #00b4f0;
             animation: logo-fadein 0.3s step-start 0.3s forwards;
@@ -89,7 +90,7 @@
         .logo-progress {
             background-color: #e5e8e8;
             animation: logo-fadein 0.3s ease-in forwards,
-                       logo-progress 0.9s ease-out 0.3s forwards;
+            logo-progress 1s ease-out 0.3s forwards;
             animation-delay: 0s, 0.3s;
             border: 5px solid #fff;
             border-left: none;
