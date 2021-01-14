@@ -24,7 +24,7 @@ import com.vaadin.flow.theme.lumo.Lumo;
         name = "Site about @kyberorg",
         shortName = "whoami",
         offlinePath = "offline-page.html",
-        offlineResources = {"images/logo.png"},
+        offlineResources = {"images/logo.jpg"},
         description = "WhoAmI: site about @kyberorg")
 @Theme(value = Lumo.class, variant = Lumo.DARK)
 @CssImport("./css/main_view.css")
