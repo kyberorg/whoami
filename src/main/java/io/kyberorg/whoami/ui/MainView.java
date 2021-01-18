@@ -1,12 +1,12 @@
 package io.kyberorg.whoami.ui;
 
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.UI;
-import com.vaadin.flow.component.dependency.CssImport;
-import com.vaadin.flow.component.html.H2;
-import com.vaadin.flow.component.html.H3;
+
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.page.Push;
 import com.vaadin.flow.component.page.Viewport;
+import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.InitialPageSettings;
 import com.vaadin.flow.server.PWA;
@@ -15,6 +15,7 @@ import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.lumo.Lumo;
+import io.kyberorg.whoami.ui.sections.*;
 
 @SpringComponent
 @UIScope
@@ -27,22 +28,48 @@ import com.vaadin.flow.theme.lumo.Lumo;
         offlineResources = {"images/logo.jpg"},
         description = "WhoAmI: site about @kyberorg")
 @Theme(value = Lumo.class, variant = Lumo.DARK)
-@CssImport("./css/main_view.css")
+@PageTitle("Kyberorg.io")
 @Route("")
 public class MainView extends VerticalLayout implements PageConfigurator {
 
     public MainView() {
-        H2 title = new H2("Hello, I am kyberorg");
-        H3 subTitle = new H3("Soon here will some useful content. See again soon...");
+        Component titleSection = TitleSection.getInstance();
 
+        Section aboutSection = Section.create()
+                .withTitle("Who Am I? (About Me)")
+                .andContent(new AboutSection())
+                .build();
+
+        Section socialSection = Section.create()
+                .withTitle("Where Am I? (Social Network Accounts)")
+                .andContent(new SocialSection())
+                .build();
+
+        Section myProjectSection = Section.create()
+                .withTitle("What I do? (My Projects)")
+                .andContent(new ProjectsSection())
+                .build();
+
+        Section myWorkSection = Section.create()
+                .withTitle("Who pays me? (My Work)")
+                .andContent(new WorkSection())
+                .build();
+
+        Section homeSection = Section.create()
+                .withTitle("Where I reside? (My Home)")
+                .andContent(new HomeSection())
+                .build();
+
+        getStyle().set("margin","0 auto");
+        setMaxWidth("1000px");
         addClassName("centered-content");
-        add(title, subTitle);
+
+        add(titleSection, aboutSection, socialSection, myProjectSection, myWorkSection, homeSection);
 
         // hide the splash screen after the main view is loaded
         UI.getCurrent().getPage().executeJs(
                 "document.querySelector('#splash-screen').classList.add('loaded')");
     }
-
     @Override
     public void configurePage(InitialPageSettings settings) {
         settings.addFavIcon("icon", "/icons/favicon-32x32.png", "32x32");
