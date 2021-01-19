@@ -18,3 +18,8 @@ Created by [Krita](https://krita.org).
 Icons are resized using [resizeimage.net](https://resizeimage.net/)
 
 Logos are taken from [IconNinja](https://www.iconninja.com/)
+
+## About: Meta Tags and Sitemap
+Meta Tags generated using [Meta Tags](https://metatags.io/)
+
+Sitemap generated with [XML-Sitemaps.com](https://www.xml-sitemaps.com/)

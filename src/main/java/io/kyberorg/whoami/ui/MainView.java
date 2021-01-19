@@ -28,7 +28,7 @@ import io.kyberorg.whoami.ui.sections.*;
         offlineResources = {"images/logo.jpg"},
         description = "WhoAmI: site about @kyberorg")
 @Theme(value = Lumo.class, variant = Lumo.DARK)
-@PageTitle("Kyberorg.io")
+@PageTitle("Kyberorg.io - Site about kyberorg")
 @Route("")
 public class MainView extends VerticalLayout implements PageConfigurator {
 
@@ -82,6 +82,19 @@ public class MainView extends VerticalLayout implements PageConfigurator {
         settings.addMetaTag("application-name", "WhoAmI");
         settings.addMetaTag("msapplication-TileColor", "#ffc40d");
         settings.addMetaTag("theme-color", "#ffffff");
+
+        //SEO tags
+        settings.addMetaTag("title","Kyberorg.io - Site about kyberorg");
+        settings.addMetaTag("description", "Site about Aleksandr Muravja aka kyberorg");
+        settings.addMetaTag("og:type","website");
+        settings.addMetaTag("og:url", "https://kyberorg.io/");
+        settings.addMetaTag("og:title", "Kyberorg.io - Site about kyberorg");
+        settings.addMetaTag("og:image", "https://kyberorg.io/images/preview.png");
+        settings.addMetaTag("twitter:card","summary_large_image");
+        settings.addMetaTag("twitter:url", "https://kyberorg.io/");
+        settings.addMetaTag("twitter:title","Kyberorg.io - Site about kyberorg");
+        settings.addMetaTag("twitter:description", "Site about Aleksandr Muravja aka kyberorg");
+        settings.addMetaTag("twitter:image", "https://kyberorg.io/images/preview.png");
 
         settings.addInlineFromFile("splash-screen.html", InitialPageSettings.WrapMode.NONE);
     }
