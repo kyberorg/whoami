@@ -37,6 +37,12 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Install Java 15
+      users: actions/setup-java@v1
+      with:
+        java-version: '15'
+        architecture: x64
+
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v1
