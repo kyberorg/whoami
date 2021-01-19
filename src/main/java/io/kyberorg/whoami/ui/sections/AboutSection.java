@@ -10,6 +10,8 @@ public class AboutSection extends VerticalLayout {
                                 
                 Mainly dealing with Docker, Docker Swarm and Kubernetes.\
                 Developing in Java (Spring and Vaadin). \
+                
+                Happy father and husband. \
                                                                
                 Hobbies are: traveling, 4x4, aviation.
                 """;

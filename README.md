@@ -1,2 +1,2 @@
 # WhoAmI
-[Site](https://whoami.kyberorg.io) about me
+[Site](https://kyberorg.io) about me
