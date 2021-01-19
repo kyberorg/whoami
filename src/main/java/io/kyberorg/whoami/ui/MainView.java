@@ -96,6 +96,9 @@ public class MainView extends VerticalLayout implements PageConfigurator {
         settings.addMetaTag("twitter:description", "Site about Aleksandr Muravja aka kyberorg");
         settings.addMetaTag("twitter:image", "https://kyberorg.io/images/preview.png");
 
+        //Splash (Loading) Screen
         settings.addInlineFromFile("splash-screen.html", InitialPageSettings.WrapMode.NONE);
+        //Google Analytics
+        settings.addInlineFromFile("gtag.html", InitialPageSettings.WrapMode.NONE);
     }
 }
