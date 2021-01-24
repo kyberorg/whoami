@@ -14,6 +14,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Install Java 15
+        uses: actions/setup-java@v1.4.3
+        with:
+          java-version: '15'
+          architecture: x64
+
       - name: Complile
         run: mvn --batch-mode --update-snapshots clean package -P production-mode,noTesting
 
