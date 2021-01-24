@@ -26,7 +26,6 @@ jobs:
       - name: Login to Hub
         uses: docker/login-action@v1
         with:
-          registry: hub.kyberorg.io
           username: ${{ secrets.HUB_USERNAME }}
           password: ${{ secrets.HUB_PASSWORD }}
 
@@ -37,7 +36,7 @@ jobs:
           context: ./
           file: Dockerfile
           push: true
-          tags: hub.kyberorg.io/kyberorg/whoami:current
+          tags: kyberorg/whoami:current
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
