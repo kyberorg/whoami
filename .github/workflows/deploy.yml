@@ -1,0 +1,42 @@
+name: "Build and Deploy"
+
+on:
+  push:
+    branches:
+      - trunk
+
+jobs:
+  deploy:
+    name: Build and Deploy
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Complile
+        run: mvn --batch-mode --update-snapshots clean package -P production-mode,noTesting
+
+      - name: Login to Hub
+        uses: docker/login-action@v1
+        with:
+          registry: hub.kyberorg.io
+          username: ${{ secrets.HUB_USERNAME }}
+          password: ${{ secrets.HUB_PASSWORD }}
+
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          context: ./
+          file: Dockerfile.DEV
+          push: true
+          tags: hub.kyberorg.io/kyberorg/whoami:current
+
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
+
+      - name: Deploy
+        uses: wei/curl@master
+        with:
+          args: -X POST ${{ secrets.DEPLOY_HOOK }}
