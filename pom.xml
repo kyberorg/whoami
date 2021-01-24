@@ -32,6 +32,8 @@
 	<properties>
 		<java.version>15</java.version>
 		<vaadin.version>14.4.5</vaadin.version>
+        <!--Start Class for Native -->
+        <start-class>io.kyberorg.whoami.Application</start-class>
         <!-- Encoding -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -76,6 +78,14 @@
             <artifactId>emoji-java</artifactId>
             <version>5.1.1</version>
         </dependency>
+
+        <!-- Spring Native -->
+        <dependency>
+            <groupId>org.springframework.experimental</groupId>
+            <artifactId>spring-graalvm-native</artifactId>
+            <version>0.8.5</version>
+        </dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -101,6 +111,13 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+        </repository>
+    </repositories>
 
 	<build>
         <finalName>whoami</finalName>
@@ -152,6 +169,39 @@
                                 <phase>compile</phase>
                             </execution>
                         </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>native</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.graalvm.nativeimage</groupId>
+                        <artifactId>native-image-maven-plugin</artifactId>
+                        <version>20.3.0</version>
+                        <configuration>
+                            <buildArgs>-H:+ReportExceptionStackTraces
+                                -Dspring.native.verify=false
+                                -H:IncludeResourceBundles=javax.servlet.LocalStrings
+                                --initialize-at-build-time=org.apache.commons.logging.LogFactory
+                                -Dspring.graal.remove-unused-autoconfig=true -Dspring.graal.remove-yaml-support=true
+                            </buildArgs>
+                            <imageName>${project.artifactId}</imageName>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>native-image</goal>
+                                </goals>
+                                <phase>package</phase>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
                     </plugin>
                 </plugins>
             </build>
