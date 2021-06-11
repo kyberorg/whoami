@@ -17,6 +17,22 @@ public class ProjectsSection extends FlexLayout {
 
         yalseeLogo.setTitle("Yalsee - the link shortener");
 
-        add(yalseeLogo);
+        Logo manjaroLogo = Logo.create()
+                .withSource("images/manjaro.png").withAltText("Manjaro Mirror")
+                .withUrl("https://manjaro.kyberorg.fi")
+                .build();
+
+        manjaroLogo.setWidth("4rem");
+        manjaroLogo.setHeight("4rem");
+
+        Logo honeypotLogo = Logo.create()
+                .withSource("images/honeypot.png").withAltText("Honeypot")
+                .withUrl("https://github.com/kyberorg/honeypot")
+                .build();
+
+        honeypotLogo.setWidth("4rem");
+        honeypotLogo.setHeight("4rem");
+
+        add(yalseeLogo, manjaroLogo, honeypotLogo);
     }
 }

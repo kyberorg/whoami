@@ -8,7 +8,7 @@ public class AboutSection extends VerticalLayout {
         String sectionText = """
                 Software craftsman and DevOps engineer. \
                                 
-                Mainly dealing with Docker, Docker Swarm and Kubernetes.\
+                Mainly dealing with Docker, Docker Swarm and Kubernetes. \
                 Developing in Java (Spring and Vaadin). \
                 
                 Happy father and husband. \
