@@ -53,3 +53,7 @@ package.json
 webpack.config.js
 webpack.generated.js
 
+/frontend/index.html
+/frontend/generated/
+/tsconfig.json
+/types.d.ts

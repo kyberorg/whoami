@@ -1,4 +1,15 @@
-FROM adoptopenjdk:15-jre-openj9
+FROM kio.ee/lib/eclipse-temurin:17-jre-alpine as runner
+LABEL maintainer="Aleksandr Muravja <alex@kyberorg.io>"
+
+# see https://yls.ee/NNRXyg (issue about sed https->http in alpine)
+# see https://yls.ee/WPJIZF (issue about updating those packages)
+RUN sed -i 's,https,http,g' /etc/apk/repositories && \
+    apk add --update-cache \
+    jq \
+    curl \
+    libcrypto1.1=1.1.1q-r0 \
+        libssl1.1=1.1.1q-r0 && \
+    rm -rf /var/cache/apk/*
 
 VOLUME /tmp
 
@@ -6,11 +17,6 @@ COPY ./target/whoami.jar /app/
 COPY ./docker-entrypoint.sh /
 
 RUN sh -c 'chmod +x /docker-entrypoint.sh'
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y netcat curl jq && \
-    apt -y autoremove && \
-    rm -rf /var/lib/apt/lists/*
 
 ENTRYPOINT ./docker-entrypoint.sh
 

@@ -19,7 +19,7 @@ jobs:
         run: mvn --batch-mode --update-snapshots clean package -P production-mode
 
       - name: Pull latest base and build images
-        run: docker pull kio.ee/hub/library/adoptopenjdk:15-jre-openj9
+        run: docker pull kio.ee/lib/eclipse-temurin:17-jre-alpine
 
       - name: Docker build and tag
         run: docker build -f Dockerfile -t kio.ee/kyberorg/whoami:current .
