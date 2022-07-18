@@ -1,7 +1,6 @@
-.idea
-.run
-node_modules
-.gitignore
-checkstyle.xml
-README.md
-
+# Ignore everything
+**
+# But JAR should stay
+!target/whoami.jar
+# Add entrypoint
+!docker-entrypoint.sh

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 JAVA_OPTS=${JAVA_OPTS}
 
@@ -13,14 +13,6 @@ export JAVA_OPTS="$JAVA_OPTS --add-opens java.base/java.lang=ALL-UNNAMED"
 export JAVA_OPTS="$JAVA_OPTS -XX:+UseContainerSupport"
 export JAVA_OPTS="$JAVA_OPTS -XX:+AlwaysActAsServerClassMachine"
 export JAVA_OPTS="$JAVA_OPTS -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/opt/dumps"
-
-## Issue 264 (OpenJ9 tuning). Based on https://yals.ee/dUxHlC
-export JAVA_OPTS="$JAVA_OPTS -Xgcpolicy:gencon"
-export JAVA_OPTS="$JAVA_OPTS -Xquickstart"
-export JAVA_OPTS="$JAVA_OPTS -Xtune:virtualized"
-export JAVA_OPTS="$JAVA_OPTS -XX:+ClassRelationshipVerifier"
-export JAVA_OPTS="$JAVA_OPTS -XX:+TransparentHugePage"
-## End OpenJ9 tuning
 
 # Vaadin Production Mode #
 export JAVA_OPTS="$JAVA_OPTS -Dvaadin.production=true"

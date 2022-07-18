@@ -16,8 +16,8 @@ VOLUME /tmp
 COPY ./target/whoami.jar /app/
 COPY ./docker-entrypoint.sh /
 
-RUN sh -c 'chmod +x /docker-entrypoint.sh'
-
+RUN chmod +x /docker-entrypoint.sh
+# RUN ls -al /
 ENTRYPOINT /docker-entrypoint.sh
 
 EXPOSE 8080
