@@ -3,7 +3,6 @@ name: "Build and Deploy"
 on:
   push:
 
-
 jobs:
   deploy:
     name: Build and Deploy
@@ -17,7 +16,7 @@ jobs:
         run: echo "${{ secrets.KIO_TOKEN }}" | docker login -u "${{ secrets.KIO_ROBOT }}" --password-stdin kio.ee
 
       - name: Compile JAR
-        run: mvn --batch-mode --update-snapshots clean package -P production-mode,noTesting
+        run: mvn --batch-mode --update-snapshots clean package -P production-mode
 
       - name: Pull latest base and build images
         run: docker pull kio.ee/hub/library/adoptopenjdk:15-jre-openj9
