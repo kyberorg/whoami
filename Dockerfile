@@ -18,7 +18,7 @@ COPY ./docker-entrypoint.sh /
 
 RUN sh -c 'chmod +x /docker-entrypoint.sh'
 
-ENTRYPOINT ./docker-entrypoint.sh
+ENTRYPOINT /docker-entrypoint.sh
 
 EXPOSE 8080
 HEALTHCHECK --start-period=60s --interval=5s --timeout=20s --retries=3 \
